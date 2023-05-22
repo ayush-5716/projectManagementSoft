@@ -20,7 +20,7 @@ public class employeeController {
     public String empHome(Model model){
         return "employee/employee.html";
     }
-    //be ok with yourself
+    //be ok with yourself this is emp repo branch
     @GetMapping("/new-employee")
     public String newEmp(Model model){
         Employee Empobj = new Employee();
