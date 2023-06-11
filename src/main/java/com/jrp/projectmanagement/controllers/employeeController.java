@@ -1,5 +1,7 @@
 package com.jrp.projectmanagement.controllers;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,6 +20,8 @@ public class employeeController {
 
     @GetMapping("/")
     public String empHome(Model model){
+        List<Employee> employees = empRepo.findAll();
+        model.addAttribute("employees", employees);
         return "employee/employee.html";
     }
     //be ok with yourself this is emp repo branch edited again

@@ -1,5 +1,7 @@
 package com.jrp.projectmanagement.controllers;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,6 +23,8 @@ public class projectController {
 
     @GetMapping("/")
     public String proHome(Model model){
+        List<Project> projects  = proRepo.findAll();
+        model.addAttribute("projects",projects);
         return "project/project";
     }
 
