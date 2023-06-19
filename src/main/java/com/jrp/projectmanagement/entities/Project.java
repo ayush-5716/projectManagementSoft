@@ -1,9 +1,12 @@
 package com.jrp.projectmanagement.entities;
 
+import java.util.List;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 
 @Entity
 public class Project {
@@ -15,6 +18,19 @@ public class Project {
     private String name;
     private String stage;
     private String description;
+
+    @OneToMany(mappedBy="theProject")
+    private List<Employee> emps;
+
+    public List<Employee> getEmps() {
+        return emps;
+    }
+
+
+    public void setEmps(List<Employee> emps) {
+        this.emps = emps;
+    }
+
 
     public Project(){}
 
