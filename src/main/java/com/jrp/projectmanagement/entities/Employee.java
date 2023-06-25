@@ -40,6 +40,12 @@ public class Employee {
 
     
 
+    public Employee(String emailId, String firstName, String lastName) {
+        this.emailId = emailId;
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
+
     public Employee(){}
 
     public Employee(String firstName, String lastName) {
@@ -71,11 +77,11 @@ public class Employee {
         this.lastName = lastName;
     }
 
-    public List<Project> getTheProject() {
+    public List<Project> getProjects() {
         return theProject;
     }
 
-    public void setTheProject(List<Project> theProject) {
+    public void setProjects(List<Project> theProject) {
         this.theProject = theProject;
     }
 

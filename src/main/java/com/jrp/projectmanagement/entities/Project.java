@@ -1,5 +1,6 @@
 package com.jrp.projectmanagement.entities;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import jakarta.persistence.CascadeType;
@@ -31,8 +32,15 @@ public class Project {
     }
 
 
-    public void setEmps(List<Employee> emps) {
+    public void setEmployee(List<Employee> emps) {
         this.emps = emps;
+    }
+
+    public void addEmployee(Employee emp) {
+        if(emps == null) {
+            emps = new ArrayList<>();
+        }
+        emps.add(emp);
     }
 
 
