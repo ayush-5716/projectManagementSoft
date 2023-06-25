@@ -1,14 +1,15 @@
 package com.jrp.projectmanagement.entities;
 
+import java.util.List;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.ManyToOne;
-
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 @Entity
 public class Employee {
     
@@ -23,17 +24,11 @@ public class Employee {
     private String firstName;
     private String lastName;
 
-    @ManyToOne(cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.REFRESH,CascadeType.PERSIST})
-    @JoinColumn(name="project_id")
-    private Project theProject;
+    @ManyToMany(cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.REFRESH,CascadeType.PERSIST})
+    @JoinTable(name="project_employee",joinColumns=@JoinColumn(name="employee_id"),inverseJoinColumns=@JoinColumn(name="project_id"))
+    private List<Project> theProject;
 
-    public Project getTheProject() {
-        return theProject;
-    }
-
-    public void setTheProject(Project theProject) {
-        this.theProject = theProject;
-    }
+    
 
     public String getEmailId() {
         return emailId;
@@ -74,6 +69,14 @@ public class Employee {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    public List<Project> getTheProject() {
+        return theProject;
+    }
+
+    public void setTheProject(List<Project> theProject) {
+        this.theProject = theProject;
     }
 
 }

@@ -2,11 +2,14 @@ package com.jrp.projectmanagement.entities;
 
 import java.util.List;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 
 @Entity
 public class Project {
@@ -19,7 +22,8 @@ public class Project {
     private String stage;
     private String description;
 
-    @OneToMany(mappedBy="theProject")
+    @ManyToMany(cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.REFRESH,CascadeType.PERSIST})
+    @JoinTable(name="project_employee",joinColumns=@JoinColumn(name="project_id"),inverseJoinColumns=@JoinColumn(name="employee_id"))
     private List<Employee> emps;
 
     public List<Employee> getEmps() {
