@@ -18,8 +18,6 @@ public class Employee {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long ID;
 
-
-
     private String emailId;
     private String firstName;
     private String lastName;
