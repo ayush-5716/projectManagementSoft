@@ -4,12 +4,18 @@
     <body>
         <nav th:replace="layouts :: navbar"></nav>
         <center><h4> Employee Details </h4>
-
+            <center>
+        <div style="width: 1000px;">
         <eTable th:replace="layouts :: eTable"></eTable>
-        
+        </center>
+    </div>
 
-        <center><h4> Project Details </h4></center>
-        <pTable th:replace="layouts :: pTable"></pTable>
-    </center>
+        <center>
+            <h4> Project Details </h4></center>
+            <div style="width: 1000px;">
+                <pTable th:replace="layouts :: pTable"></pTable>
+            </div>
+        </center>
+        
     </body>
 </html> 
