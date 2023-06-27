@@ -1,37 +1,39 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-    <head th:replace="layouts :: header"> </head>
-    <body>
-        <nav th:replace="layouts :: navbar"></nav>
-        <div>
-            <center>
-        <form action="/projects/create" method="POST" th:object="${proObj}">
-            <form th:action="@{/projects/save}" th:object="${project}" method="POST">
-		
+
+<head th:replace="layouts :: header"> </head>
+
+<body>
+    <nav th:replace="layouts :: navbar"></nav>
+    <div>
+        <center>
+            <form action="/projects/create" method="POST" th:object="${proObj}">
+                <form th:action="@{/projects/save}" th:object="${project}" method="POST">
+
                     <P><input type="text" placeholder="Project Name" th:field="*{name}"></P>
 
-                   
+
                     <select th:field="${project.stage}">
                         <option th:value="NOTSTARTED"> Not Started</option>
                         <option th:value="INPROGRESS"> In Progress</option>
                         <option th:value="COMPLETED"> Completed</option>
                     </select>
-                    
-                <p>
-                <div>
-                    <textarea type="text" placeholder="Enter Project Description" th:field="${project.Description}"></textarea>
-                </div>
-                </p>
-                <select th:field="*{emps}" multiple="multiple">
-                    <option th:each="employee : ${emps}"
-                            th:value="${employee.ID}"
-                            th:text="${employee.firstName}">
-                    </option>
-                </select>
 
-                <P><input type="submit" /></P>
-        </form>
-    </center>
-        </div>
-    </body>
+                    <p>
+                    <div>
+                        <textarea type="text" placeholder="Enter Project Description"
+                            th:field="${project.Description}"></textarea>
+                    </div>
+                    </p>
+                    <select th:field="*{emps}" multiple="multiple">
+                        <option th:each="employee : ${emps}" th:value="${employee.ID}" th:text="${employee.firstName}">
+                        </option>
+                    </select>
+
+                    <P><input type="submit" /></P>
+                </form>
+        </center>
+    </div>
+</body>
+
 </html>

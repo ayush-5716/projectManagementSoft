@@ -3,97 +3,103 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head th:fragment="header">
-	<!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-	
-	<link rel="stylesheet" th:href="@{/css/formatting.css}">
-	
-	<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
-	
-	 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-	  <link rel="stylesheet" href="/resources/demos/style.css">
-	  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-	  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-</head> 
 
-<nav th:fragment = "navbar" class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="#"> Project Management </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
+  <link rel="stylesheet" th:href="@{/css/formatting.css}">
 
-        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-          <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-            <li class="nav-item active">
-              <a class="nav-link" th:href="@{/live}">Home</a>
-            </li>
-            <li class="nav-item active">
-              <a class="nav-link" th:href="@{/employees/}">Employees</a>
-            </li>
-            <li class="nav-item active">
-              <a class="nav-link" th:href="@{/projects/}">Projects</a>
-            </li>
-            <li class="nav-item active">
-              <a class="nav-link" th:href="@{/employees/new-employee}">new Employee</a>
-            </li>
-            <li class="nav-item active">
-              <a class="nav-link" th:href="@{/projects/new-project}">new project</a>
-            </li>
-            
-          </ul>
-        </div>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<nav th:fragment="navbar" class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="#"> Project Management </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02"
+    aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+      <li class="nav-item active">
+        <a class="nav-link" th:href="@{/live}">Home</a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" th:href="@{/employees/}">Employees</a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" th:href="@{/projects/}">Projects</a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" th:href="@{/employees/new-employee}">new Employee</a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" th:href="@{/projects/new-project}">new project</a>
+      </li>
+
+    </ul>
+  </div>
 </nav>
 
-  <pTable th:fragement="pTable">
-  <table class="table">
+<pTable th:fragement="pTable">
+  <table class="table table-bordered table-striped">
     <thead class="thead-dark">
-        <tr> 
+      <tr>
 
-            <th scope="row"> Id </th>
-            <th scope="row"> Project Name </th>
-            <th> Project Stage </th>
-            <th> Project Description </th>
-        </tr>
+        <!-- <th scope="row"> Id </th> -->
+        <!-- <th scope="row"> Project Name </th> -->
+        <th> Project Stage </th>
+        <th> Count </th>
+        <!-- <th> Project Description </th> -->
+      </tr>
     </thead>
     <tbody>
-        <tr th:each="aProject : ${projects}">
-            <td th:text="${aProject.projectId}"/>
-            <td th:text="${aProject.name}"/>
-            <td th:text="${aProject.stage}"/>
-            <td th:text="${aProject.description}"/>
-        </tr>
+      <tr th:each="aProject : ${projects}">
+        <!-- <td th:text="${aProject.projectId}" /> -->
+        <!-- <td th:text="${aProject.name}" /> -->
+        <td th:text="${aProject.label}" />
+        <td th:text="${aProject.val}" />
+        <!-- <td th:text="${aProject.description}" /> -->
+      </tr>
     </tbody>
-</table>
+  </table>
 </pTable>
 
 
 <eTable th:fragment="eTable">
-  <table class="table">
+  <table class="able table-bordered table-striped">
     <thead class="thead-dark">
       <tr>
-        <th> Id </th>
-        <th> Email id </th>
+        <!-- <th> Id </th> -->
+        <!-- <th> Email id </th> -->
         <th> First Name </th>
         <th> Last Name </th>
+        <th> Project Count</th>
       </tr>
     </thead>
     <tbody>
       <tr th:each="aEmployee : ${employees}">
-        <td th:text="${aEmployee.ID}"/>
-        <td th:text="${aEmployee.emailId}"/>
-        <td th:text="${aEmployee.firstName}"/>
-        <td th:text="${aEmployee.lastName}"/>
+        <!-- <td th:text="${aEmployee.ID}" /> -->
+        <!-- <td th:text="${aEmployee.emailId}" /> -->
+        <td th:text="${aEmployee.firstName}" />
+        <td th:text="${aEmployee.lastName}" />
+        <td th:text="${aEmployee.projectCount}" />
       </tr>
 
     </tbody>
   </table>
 </eTable>
 
-   
-</div>
+<body>
+
 </html>
