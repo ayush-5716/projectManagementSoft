@@ -9,18 +9,20 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.jrp.projectmanagement.dto.employeeProject;
 import com.jrp.projectmanagement.entities.Employee;
 import com.jrp.projectmanagement.repositories.employeeRepository;
 
 @Controller
 @RequestMapping("/employees")
 public class employeeController {
+
     @Autowired
     employeeRepository empRepo;
 
     @GetMapping("/")
     public String empHome(Model model){
-        List<Employee> employees = empRepo.findAll();
+        List<employeeProject> employees =  empRepo.employeeProjects();;
         model.addAttribute("employees", employees);
         return "employee/employee.html";
     }

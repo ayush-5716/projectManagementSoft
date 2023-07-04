@@ -17,8 +17,8 @@ import com.jrp.projectmanagement.repositories.projectRepository;
 public class ProjectManagementApplication {
 
 	@Autowired
-    employeeRepository empRepo;
-	
+	employeeRepository empRepo;
+
 	@Autowired
 	projectRepository projRepo;
 
@@ -42,15 +42,23 @@ public class ProjectManagementApplication {
 		Employee emp8 = new Employee("Honor", "Miles", "miles@gmail.com");
 		Employee emp9 = new Employee("Tony", "Roggers", "roggers@gmail.com");
 		
-		Project pro1 = new Project("Large Production Deploy", "NOTSTARTED", "This requires all hands on deck for"
-					+ "the final deployment of the software into production");
-		Project pro2 = new Project("New Employee Budget",  "COMPLETED", "Decide on a new employee bonus budget"
-					+ "for the year and figureout who will be promoted");
-		Project pro3 = new Project("Office Reconstruction", "INPROGRESS", "The office building in Monroe has "
-					+ "been damaged due to hurricane in the region. This needs to be reconstructed");
-		Project pro4 = new Project("Improve Intranet Security", "INPROGRESS", "With the recent data hack, the office"
-					+ "security needs to be improved and proper security team needs to be hired for "
-					+ "implementation");
+		Project pro1 = new Project("Large Production Deploy", "NOTSTARTED", """
+                    This requires all hands on deck for\
+                    the final deployment of the software into production\
+                    """);
+		Project pro2 = new Project("New Employee Budget",  "COMPLETED", """
+                    Decide on a new employee bonus budget\
+                    for the year and figureout who will be promoted\
+                    """);
+		Project pro3 = new Project("Office Reconstruction", "INPROGRESS", """
+                    The office building in Monroe has \
+                    been damaged due to hurricane in the region. This needs to be reconstructed\
+                    """);
+		Project pro4 = new Project("Improve Intranet Security", "INPROGRESS", """
+                    With the recent data hack, the office\
+                    security needs to be improved and proper security team needs to be hired for \
+                    implementation\
+                    """);
 					
 			pro1.addEmployee(emp1);
 			pro1.addEmployee(emp2);

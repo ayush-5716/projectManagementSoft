@@ -1,8 +1,6 @@
 package com.jrp.projectmanagement.controllers;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,7 +13,6 @@ import com.jrp.projectmanagement.dto.employeeProject;
 import com.jrp.projectmanagement.dto.stageCount;
 import com.jrp.projectmanagement.repositories.employeeRepository;
 import com.jrp.projectmanagement.repositories.projectRepository;
-
 
 
 @Controller
@@ -31,9 +28,6 @@ public class helloController {
     @GetMapping("/live")
     public String hello(Model model) throws JsonProcessingException{
         List<stageCount> projects = proRepo.stageCnt();
-
-        Map<String,Object> map = new HashMap<>();
-
         model.addAttribute("projects", projects);
 
         List<stageCount> stgCnt = proRepo.stageCnt();
