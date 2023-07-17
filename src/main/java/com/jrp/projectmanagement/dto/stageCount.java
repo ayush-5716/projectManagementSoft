@@ -5,4 +5,3 @@ public interface stageCount {
     public String getLabel();
     public int getVal();
 }
-
