@@ -10,12 +10,14 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.SequenceGenerator;
 @Entity
 public class Employee {
     
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "employee_seq")
+    @SequenceGenerator(name="employee_seq",sequenceName = "employee_seq",allocationSize = 1)
     private Long ID;
 
     private String emailId;
@@ -51,14 +53,6 @@ public class Employee {
         this.lastName = lastName;
     }
 
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
     public Long getID() {
         return ID;
     }
@@ -67,6 +61,16 @@ public class Employee {
         ID = iD;
     }
 
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    
     public String getLastName() {
         return lastName;
     }

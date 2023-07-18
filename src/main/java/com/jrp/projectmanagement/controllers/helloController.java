@@ -45,38 +45,6 @@ public class helloController {
         List<employeeProject> employees = empRepo.employeeProjects();
         model.addAttribute("employees", employees);
         return "homepage";
-
-        
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     }
 
 }
