@@ -35,7 +35,6 @@ public class projectController {
         model.addAttribute("projects", projects);
 
         List<stageCount> stgCnt = proRepo.stageCnt();
-
         //converting object into json
         ObjectMapper objMapper = new ObjectMapper();
         String jsonString = objMapper.writeValueAsString(stgCnt);
@@ -57,6 +56,7 @@ public class projectController {
     @PostMapping("/create")
     public String createProject(Project project){
         proRepo.save(project);
+        System.out.println(project.getName());
 
         return "redirect:/projects/new-project";
     }
