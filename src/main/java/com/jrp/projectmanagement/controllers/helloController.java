@@ -14,6 +14,8 @@ import com.jrp.projectmanagement.dto.employeeProject;
 import com.jrp.projectmanagement.dto.stageCount;
 import com.jrp.projectmanagement.repositories.employeeRepository;
 import com.jrp.projectmanagement.repositories.projectRepository;
+import org.springframework.web.bind.annotation.RequestParam;
+
 
 
 @Controller
@@ -28,8 +30,17 @@ public class helloController {
     @Autowired
     employeeRepository empRepo;
 
-
-    @GetMapping("/live")
+    @GetMapping("/login")
+    public String loginPage() {
+        return "login";
+    }
+    @GetMapping("/logout")
+    public String logoutPage() {
+        return "logout";
+    }
+    
+    
+    @GetMapping("/")
     public String hello(Model model) throws JsonProcessingException{
         List<stageCount> projects = proRepo.stageCnt();
         model.addAttribute("projects", projects);
