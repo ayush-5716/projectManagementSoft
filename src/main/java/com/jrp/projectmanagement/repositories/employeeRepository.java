@@ -2,12 +2,15 @@ package com.jrp.projectmanagement.repositories;
 
 import java.util.List;
 
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Component;
 
 import com.jrp.projectmanagement.dto.employeeProject;
 import com.jrp.projectmanagement.entities.Employee;
 
+@ComponentScan
 public interface employeeRepository extends CrudRepository<Employee, Long> {
     @Override
     public List<Employee> findAll(); 

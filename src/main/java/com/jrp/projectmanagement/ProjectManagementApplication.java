@@ -3,6 +3,7 @@ package com.jrp.projectmanagement;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 
 import com.jrp.projectmanagement.repositories.employeeRepository;
 import com.jrp.projectmanagement.repositories.projectRepository;
