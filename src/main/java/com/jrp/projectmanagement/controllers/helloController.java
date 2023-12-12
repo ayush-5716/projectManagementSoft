@@ -21,9 +21,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class helloController {
 
-    @Value("${version}")
-    String ver;
-
     @Autowired
     projectRepository proRepo;
 
@@ -44,7 +41,6 @@ public class helloController {
     public String hello(Model model) throws JsonProcessingException{
         List<stageCount> projects = proRepo.stageCnt();
         model.addAttribute("projects", projects);
-        model.addAttribute("ver", ver);
         List<stageCount> stgCnt = proRepo.stageCnt();
 
         //converting object into json
