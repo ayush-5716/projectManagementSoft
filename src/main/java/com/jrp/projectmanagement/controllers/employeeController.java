@@ -22,7 +22,7 @@ public class employeeController {
 
     @GetMapping("/")
     public String empHome(Model model){
-        List<employeeProject> employees =  empRepo.employeeProjects();;
+        List<employeeProject> employees =  empRepo.employeeProjects();
         model.addAttribute("employees", employees);
         return "employee/employee.html";
     }

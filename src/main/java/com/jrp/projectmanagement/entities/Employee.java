@@ -2,7 +2,11 @@ package com.jrp.projectmanagement.entities;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.jrp.projectmanagement.validators.UniqueValue;
+
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -20,10 +24,12 @@ public class Employee {
     @SequenceGenerator(name="employee_seq",sequenceName = "employee_seq",allocationSize = 1)
     private Long ID;
 
+    @UniqueValue
     private String emailId;
     private String firstName;
     private String lastName;
-
+ 
+    @JsonIgnore
     @ManyToMany(cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.REFRESH,CascadeType.PERSIST})
     @JoinTable(name="project_employee",joinColumns=@JoinColumn(name="employee_id"),inverseJoinColumns=@JoinColumn(name="project_id"))
     private List<Project> theProject;

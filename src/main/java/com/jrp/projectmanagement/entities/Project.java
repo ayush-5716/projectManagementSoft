@@ -3,6 +3,8 @@ package com.jrp.projectmanagement.entities;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -29,6 +31,8 @@ public class Project {
     @JoinTable(name="Project_Employee",joinColumns=@JoinColumn(name="project_id"),inverseJoinColumns=@JoinColumn(name="employee_id"))
     private List<Employee> emps;
 
+
+    @JsonIgnore
     public List<Employee> getEmps() {
         return emps;
     }

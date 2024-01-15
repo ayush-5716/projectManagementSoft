@@ -27,31 +27,31 @@ public class helloController {
     @Autowired
     employeeRepository empRepo;
 
-    @GetMapping("/login")
-    public String loginPage() {
-        return "login";
-    }
-    @GetMapping("/logout")
-    public String logoutPage() {
-        return "logout";
-    }
+
     
     
     @GetMapping("/")
     public String hello(Model model) throws JsonProcessingException{
+        
+
+        //converting object into json
+       
+
+        
+
+        List<employeeProject> employees = empRepo.employeeProjects();
+        model.addAttribute("employees", employees);
+
         List<stageCount> projects = proRepo.stageCnt();
         model.addAttribute("projects", projects);
         List<stageCount> stgCnt = proRepo.stageCnt();
 
-        //converting object into json
         ObjectMapper objMapper = new ObjectMapper();
         String jsonString = objMapper.writeValueAsString(stgCnt);
-
         model.addAttribute("projectStageCnt", jsonString);
-
-        List<employeeProject> employees = empRepo.employeeProjects();
-        model.addAttribute("employees", employees);
         return "homepage";
+
+        
     }
 
 }
