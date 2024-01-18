@@ -25,4 +25,6 @@ public interface employeeRepository extends PagingAndSortingRepository<Employee,
     public List<employeeProject> employeeProjects();
 
     public Employee findByEmailId(String arg0);
+
+    public Employee findByID(Long iD);
 }

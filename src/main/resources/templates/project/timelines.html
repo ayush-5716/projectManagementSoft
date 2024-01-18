@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layouts :: header">
+
+
+</head>
+
+<body>
+    <nav th:replace="layouts :: navbar"></nav>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+
+        var chartData = "[[${jsonString}]]";
+        function decodeHtml(html) {
+            var txt = document.createElement("textarea");
+            txt.innerHTML = html;
+            return txt.value;
+        }
+
+
+        var chartDataDecoded = decodeHtml(chartData);
+
+
+        var chartJsonArray = JSON.parse(chartDataDecoded);
+        var resultArray = [];
+
+        for (var i in chartJsonArray) {
+            resultArray.push([i, chartJsonArray[i]]);
+
+        }
+
+
+        google.charts.load('current', { 'packages': ['timeline'] });
+        google.charts.setOnLoadCallback(drawChart);
+
+        function drawChart() {
+
+            var container = document.getElementById('data_div');
+            var chart = new google.visualization.Timeline(container);
+            var dataTable = new google.visualization.DataTable();
+
+            dataTable.addColumn({ type: 'string', id: 'Name' });
+            dataTable.addColumn({ type: 'date', id: 'startDate' });
+            dataTable.addColumn({ type: 'date', id: 'endDate' });
+            for (var i = 0; i < resultArray.length; i++) {
+                dataTable.addRows([
+                    [resultArray[i][1]["name"], new Date(resultArray[i][1]["startDate"]), new Date(resultArray[i][1]["endDate"])]
+                ]);
+            }
+
+
+            chart.draw(dataTable);
+        }
+    </script>
+    <center>
+        <div style="height: 700px; width: 100% ;" id="data_div"></div>
+    </center>
+</body>
+
+</html>

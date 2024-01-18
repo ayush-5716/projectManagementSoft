@@ -7,7 +7,6 @@
     <nav th:replace="layouts :: navbar"></nav>
     <center>
         <form action="/employees/create" method="POST" th:object="${empObj}">
-
             <p> Email ID: <input type="text" th:field="${empObj.emailId}" /> </p>
             <p> FirstName: <input type="text" th:field="${empObj.firstName}" /> </p>
             <p> LastName: <input type="text" th:field="${empObj.lastName}" /> </p>

@@ -1,6 +1,7 @@
 package com.jrp.projectmanagement.entities;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -14,6 +15,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.SequenceGenerator;
+import jakarta.validation.constraints.NotBlank;
 
 @Entity
 public class Project {
@@ -31,7 +33,11 @@ public class Project {
     @JoinTable(name="Project_Employee",joinColumns=@JoinColumn(name="project_id"),inverseJoinColumns=@JoinColumn(name="employee_id"))
     private List<Employee> emps;
 
-
+    @NotBlank(message="Date cannot be empty")
+    Date startDate;
+    @NotBlank(message="Date cannot be empty")
+    Date endDate;
+    
     @JsonIgnore
     public List<Employee> getEmps() {
         return emps;
@@ -42,11 +48,33 @@ public class Project {
         this.emps = emps;
     }
 
+
+
     public void addEmployee(Employee emp) {
         if(emps == null) {
             emps = new ArrayList<>();
         }
         emps.add(emp);
+    }
+
+
+    public Date getStartDate() {
+        return startDate;
+    }
+
+
+    public void setStartDate(Date startDate) {
+        this.startDate = startDate;
+    }
+
+
+    public Date getEndDate() {
+        return endDate;
+    }
+
+
+    public void setEndDate(Date endDate) {
+        this.endDate = endDate;
     }
 
 

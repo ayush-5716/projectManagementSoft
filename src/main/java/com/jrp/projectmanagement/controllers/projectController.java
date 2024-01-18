@@ -12,10 +12,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.jrp.projectmanagement.dto.stageCount;
+import com.jrp.projectmanagement.dto.timeChartData;
 import com.jrp.projectmanagement.entities.Employee;
 import com.jrp.projectmanagement.entities.Project;
 import com.jrp.projectmanagement.repositories.employeeRepository;
 import com.jrp.projectmanagement.repositories.projectRepository;
+import org.springframework.web.bind.annotation.RequestParam;
+
 
 
 
@@ -60,4 +63,17 @@ public class projectController {
 
         return "redirect:/projects/new-project";
     }
+
+    @GetMapping("/timelines")
+    public String getTimeeLinesPage(Model model) throws JsonProcessingException {
+        List<timeChartData> timeData  = proRepo.getTimeData();
+        System.out.println("----------------------------------------------");
+        System.out.println(timeData.get(4).getEndDate());
+        ObjectMapper objMapper = new ObjectMapper();
+        String jsonString = objMapper.writeValueAsString(timeData);
+        model.addAttribute("jsonString", jsonString);
+        return "project/timelines";
+    }
+    
+
 }

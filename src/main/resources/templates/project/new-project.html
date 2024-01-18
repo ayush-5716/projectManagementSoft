@@ -7,8 +7,7 @@
     <nav th:replace="layouts :: navbar"></nav>
     <div>
         <center>
-            <form action="/projects/create" method="POST" th:object="${proObj}">
-                <form th:action="@{/projects/save}" th:object="${project}" method="POST">
+                <form th:action="@{/projects/create}" th:object="${project}" method="POST">
 
                     <P><input type="text" placeholder="Project Name" th:field="*{name}"></P>
 
@@ -29,7 +28,26 @@
                         <option th:each="employee : ${emps}" th:value="${employee.ID}" th:text="${employee.firstName}">
                         </option>
                     </select>
+                    <center>
+                    Project Start Date:
+                    <div>
+                        <input id="dp3" type="text" class="mb-4 col-2 col-xs-4" value="Start Date"
+                            th:field="${project.startDate}" >
+                    </div>
 
+
+                    Project End Date:
+                    <div>
+                        <input id="dp4" type="text" class="mb-4 col-2 col-xs-4" value="End Date"
+                            th:field="${project.endDate}">
+                    </div>
+
+                    
+                    </center>
+                    <script type="text/javascript">
+                        $('#dp3').datepicker();
+                        $('#dp4').datepicker();
+                    </script>
                     <P><input type="submit" /></P>
                 </form>
         </center>

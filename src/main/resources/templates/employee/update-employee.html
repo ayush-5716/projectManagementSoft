@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layouts :: header"> </head>
+
+<body>
+    <nav th:replace="layouts :: navbar"></nav>
+    <center>
+        <form action="/employees/updateEnd" method="POST" th:object="${aEmployee}">
+
+            <!-- This will be used to bind to the employee that was clicked on (USED for updates) -->
+            <input type="hidden" th:field="${aEmployee.ID}"/>
+            <p> Email ID: <input type="text" th:field="${aEmployee.emailId}" /> </p>
+            <p> FirstName: <input type="text" th:field="${aEmployee.firstName}" /> </p>
+            <p> LastName: <input type="text" th:field="${aEmployee.lastName}" /> </p>
+            <P> <input type="submit" value="submit" /> </P>
+        </form>
+    </center>
+</body>
+
+</html>
